@@ -23,12 +23,22 @@ public class Main {
     public static int Task4(int k, int s, int num) {
         int sum = 0, numCopy = num;
         if (num == (int) Math.pow(10, k)) return kol;
-        for (int i = 0; i < k-1; i++) {
+        for (int i = 0; i < k; i++) {
             sum += numCopy % 10;
             numCopy /= 10;
         }
         if (sum == s) kol++;
         return Task4(k, s, ++num);
+    }
+
+    public static int Task5(int n) {
+
+        if (n < 10) {
+            return n;
+        }
+        else {
+            return n % 10 + Task5(n / 10);
+        }
     }
 
     public static void main(String[] args) {
@@ -40,5 +50,7 @@ public class Main {
         num2 = scan.nextInt();
         int num3 = (int) Math.pow(10, num1-1);
         System.out.println(Task4(num1, num2, num3) + " Чисел");
+        System.out.println("ЗАДАЧА 5\nВведите число N: ");
+        System.out.println(Task5(scan.nextInt()) + " = Сумма цифр");
     }
 }
